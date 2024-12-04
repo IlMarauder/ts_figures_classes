@@ -18,8 +18,14 @@ export class Triangle implements Figure {
     const leftSides = sides.filter((side) => side !== maxSide);
     const sumLeftSides = leftSides.reduce((acc, side) => acc + side);
 
-    if (a <= 0 || b <= 0 || c <= 0 || sumLeftSides <= maxSide) {
-      throw new Error('your error message');
+    if (a <= 0 || b <= 0 || c <= 0) {
+      throw new Error('One of the sides is equal or less than 0');
+    }
+
+    if (sumLeftSides <= maxSide) {
+      throw new Error(
+        'One of the sides is equal or longer than sum of two others',
+      );
     }
   }
 
@@ -47,7 +53,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('your error message');
+      throw new Error('Radius can not be equal or less than 0');
     }
   }
 
@@ -65,7 +71,7 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('your error message');
+      throw new Error('Some of your sides are equal or less than 0');
     }
   }
 
